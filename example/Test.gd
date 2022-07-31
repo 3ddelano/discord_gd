@@ -22,9 +22,9 @@ func Print(var1, var2 = null, var3 = null):
 
 func _on_rerun_btn_pressed() -> void:
 	Print("\n---------------\nRunning\n---------------\n")
-	rest = DiscordRESTClient.new()
-	add_child(rest)
-	rest.set_token(Env.get_var("TOKEN"))
+#	rest = DiscordRESTClient.new()
+#	add_child(rest)
+#	rest.set_token(Env.get_var("TOKEN"))
 
 #	var params_get_auditlog = GetGuildAuditLogParams.new()
 #	params_get_auditlog.user_id = "321233875776962560"
@@ -339,6 +339,40 @@ func _on_rerun_btn_pressed() -> void:
 
 #	Print(Snowflake.new().from_dict({increment = 1, timestamp_ms = 1501620762534, worker_id = 2}))
 
-	var intents = GatewayIntents.new(GatewayIntents.new().ALL)
-	print(1 << 0)
-	print(1 << 1)
+#	var intents = GatewayIntents.new(GatewayIntents.new().ALL)
+
+
+
+
+
+
+
+#	print(DiscordBase.new().to_dict())
+#	print(DiscordBase.new(930050630368768010).to_dict())
+#	print(DiscordBase.new("930050630368768010").to_dict())
+
+	var cli = DiscordClient.new(Env.get_var("TOKEN"))
+	add_child(cli)
+	cli.login()
+#	var chan1 = Channel.new({
+#		type = 2,
+#		id = "930050630368768010"
+#	}, cli)
+#	var chan2 = Channel.new({
+#		type = 1,
+#		id = "830050630368768010"
+#	}, cli)
+#	print(JSON.print(chan1.to_dict()))
+#	print(chan1)
+#	print(JSON.print(chan1.to_dict()))
+
+#	var coll1 = DiscordCollection.new(Channel, 0)
+#	print(coll1.add(chan1))
+#	print(coll1.add({
+#		type = 2,
+#		id = "930050630368768010"
+#	}))
+
+#	coll1.add(chan1)
+#	coll1.add(chan2)
+#	print(coll1)

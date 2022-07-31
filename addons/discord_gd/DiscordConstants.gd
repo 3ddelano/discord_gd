@@ -1,0 +1,494 @@
+class_name DiscordConstants
+
+const ActivityTypes = {
+	GAME = 0,
+	STREAMING = 1,
+	LISTENING = 2,
+	WATCHING = 3,
+	CUSTOM = 4,
+	COMPETING = 5,
+}
+
+const ApplicationCommandOptionTypes = {
+	SUB_COMMAND = 1,
+	SUB_COMMAND_GROUP = 2,
+	STRING = 3,
+	INTEGER = 4,
+	BOOLEAN = 5,
+	USER = 6,
+	CHANNEL = 7,
+	ROLE = 8,
+	MENTIONABLE = 9,
+	NUMBER = 10,
+}
+
+const ApplicationCommandPermissionTypes = {
+	ROLE = 1,
+	USER = 2,
+}
+
+const ApplicationCommandTypes = {
+	CHAT_INPUT = 1,
+	USER = 2,
+	MESSAGE = 3
+}
+
+const AuditLogActions = {
+	GUILD_UPDATE = 1,
+
+	CHANNEL_CREATE = 10,
+	CHANNEL_UPDATE = 11,
+	CHANNEL_DELETE = 12,
+	CHANNEL_OVERWRITE_CREATE = 13,
+	CHANNEL_OVERWRITE_UPDATE = 14,
+	CHANNEL_OVERWRITE_DELETE = 15,
+
+	MEMBER_KICK = 20,
+	MEMBER_PRUNE = 21,
+	MEMBER_BAN_ADD = 22,
+	MEMBER_BAN_REMOVE = 23,
+	MEMBER_UPDATE = 24,
+	MEMBER_ROLE_UPDATE = 25,
+	MEMBER_MOVE = 26,
+	MEMBER_DISCONNECT = 27,
+	BOT_ADD = 28,
+
+	ROLE_CREATE = 30,
+	ROLE_UPDATE = 31,
+	ROLE_DELETE = 32,
+
+	INVITE_CREATE = 40,
+	INVITE_UPDATE = 41,
+	INVITE_DELETE = 42,
+
+	WEBHOOK_CREATE = 50,
+	WEBHOOK_UPDATE = 51,
+	WEBHOOK_DELETE = 52,
+
+	EMOJI_CREATE = 60,
+	EMOJI_UPDATE = 61,
+	EMOJI_DELETE = 62,
+
+	MESSAGE_DELETE = 72,
+	MESSAGE_BULK_DELETE = 73,
+	MESSAGE_PIN = 74,
+	MESSAGE_UNPIN = 75,
+
+	INTEGRATION_CREATE = 80,
+	INTEGRATION_UPDATE = 81,
+	INTEGRATION_DELETE = 82,
+
+	STAGE_INSTANCE_CREATE = 83,
+	STAGE_INSTANCE_UPDATE = 84,
+	STAGE_INSTANCE_DELETE = 85,
+
+	STICKER_CREATE = 90,
+	STICKER_UPDATE = 91,
+	STICKER_DELETE = 92,
+
+	GUILD_SCHEDULED_EVENT_CREATE = 100,
+	GUILD_SCHEDULED_EVENT_UPDATE = 101,
+	GUILD_SCHEDULED_EVENT_DELETE = 102,
+
+	THREAD_CREATE = 110,
+	THREAD_UPDATE = 111,
+	THREAD_DELETE = 112,
+
+	APPLICATION_COMMAND_PERMISSION_UPDATE = 121,
+
+	AUTO_MODERATION_RULE_CREATE = 140,
+	AUTO_MODERATION_RULE_UPDATE = 141,
+	AUTO_MODERATION_RULE_DELETE = 142,
+	AUTO_MODERATION_BLOCK_MESSAGE = 143,
+}
+
+const ButtonStyles = {
+	PRIMARY = 1,
+	SECONDARY = 2,
+	SUCCESS = 3,
+	DANGER = 4,
+	LINK = 5
+}
+
+const ChannelTypes = {
+	GUILD_TEXT = 0,
+	DM = 1,
+	GUILD_VOICE = 2,
+	GROUP_DM = 3,
+	GUILD_CATEGORY = 4,
+	GUILD_NEWS = 5,
+	GUILD_STORE = 6,
+
+	GUILD_NEWS_THREAD = 0,
+	GUILD_PUBLIC_THREAD = 1,
+	GUILD_PRIVATE_THREAD = 2,
+	GUILD_STAGE_VOICE = 3,
+}
+
+const ComponentTypes = {
+	ACTION_ROW = 1,
+	BUTTON = 2,
+	SELECT_MENU = 3
+}
+
+const ConnectionVisibilityTypes = {
+	NONE = 0,
+	EVERYONE = 1
+}
+
+const DefaultMessageNotificationLevels = {
+	ALL_MESSAGES = 0,
+	ONLY_MENTIONS = 1
+}
+
+const ExplicitContentFilterLevels = {
+	DISABLED = 0,
+	MEMBERS_WITHOUT_ROLES = 1,
+	ALL_MEMBERS = 2
+}
+
+const GatewayOPCodes = {
+	DISPATCH = 0,
+	HEARTBEAT = 1,
+	IDENTIFY = 2,
+	PRESENCE_UPDATE = 3,
+	VOICE_STATE_UPDATE = 4,
+	VOICE_SERVER_PING = 5,
+	RESUME = 6,
+	RECONNECT = 7,
+	REQUEST_GUILD_MEMBERS = 8,
+	INVALID_SESSION = 9,
+	HELLO = 0,
+	HEARTBEAT_ACK = 1,
+	SYNC_GUILD = 2,
+	SYNC_CALL = 3
+}
+
+const GuildFeatures = [
+	"ANIMATED_ICON",
+	"BANNER",
+	"COMMERCE",
+	"COMMUNITY",
+	"DISCOVERABLE",
+	"FEATURABLE",
+	"INVITE_SPLASH",
+	"MEMBER_VERIFICATION_GATE_ENABLED",
+	"MONETIZATION_ENABLED",
+	"MORE_STICKERS",
+	"NEWS",
+	"PARTNERED",
+	"PREVIEW_ENABLED",
+	"PRIVATE_THREADS",
+	"ROLE_ICONS",
+	"ROLE_SUBSCRIPTIONS_ENABLED",
+	"SEVEN_DAY_THREAD_ARCHIVE",
+	"THREE_DAY_THREAD_ARCHIVE",
+	"TICKETED_EVENTS_ENABLED",
+	"VANITY_URL",
+	"VERIFIED",
+	"VIP_REGIONS",
+	"WELCOME_SCREEN_ENABLED"
+]
+
+const GuildIntegrationExpireBehavior = {
+	REMOVE_ROLE = 0,
+	KICK = 1
+}
+const GuildIntegrationTypes = [
+	"twitch",
+	"youtube",
+	"discord"
+]
+
+const GuildNSFWLevels = {
+	DEFAULT = 0,
+	EXPLICIT = 1,
+	SAFE = 2,
+	AGE_RESTRICTED = 3
+}
+
+const ImageFormats = [
+	"jpg",
+	"jpeg",
+	"png",
+	"webp",
+	"gif"
+]
+
+const ImageSizeBoundaries = {
+	MINIMUM = 6,
+	MAXIMUM = 6
+}
+
+const Intents = {
+	GUILDS = 1 << 0,
+	GUILD_MEMBERS = 1 << 1,
+	GUILD_BANS = 1 << 2,
+	GUILD_EMOJIS_AND_STICKERS = 1 << 3,
+	GUILD_INTEGRATIONS = 1 << 4,
+	GUILD_WEBHOOKS = 1 << 5,
+	GUILD_INVITES = 1 << 6,
+	GUILD_VOICE_STATES = 1 << 7,
+	GUILD_PRESENCES = 1 << 8,
+	GUILD_MESSAGES = 1 << 9,
+	GUILD_MESSAGE_REACTIONS = 1 << 10,
+	GUILD_MESSAGE_TYPING = 1 << 11,
+	DIRECT_MESSAGES = 1 << 12,
+	DIRECT_MESSAGE_REACTIONS =1 << 13,
+	DIRECT_MESSAGE_TYPING = 1 << 14
+}
+
+const IntentsAllNonPrivileged = Intents.GUILDS | Intents.GUILD_BANS | Intents.GUILD_EMOJIS_AND_STICKERS | Intents.GUILD_INTEGRATIONS | Intents.GUILD_WEBHOOKS | Intents.GUILD_INVITES | Intents.GUILD_VOICE_STATES | Intents.GUILD_MESSAGES | Intents.GUILD_MESSAGE_REACTIONS | Intents.GUILD_MESSAGE_TYPING | Intents.DIRECT_MESSAGES | Intents.DIRECT_MESSAGE_REACTIONS | Intents.DIRECT_MESSAGE_TYPING
+const IntentsAllPrivileged = Intents.GUILD_MEMBERS | Intents.GUILD_PRESENCES
+const IntentsAll = IntentsAllNonPrivileged | IntentsAllPrivileged
+
+const InteractionResponseTypes = {
+	PONG = 1,
+	CHANNEL_MESSAGE_WITH_SOURCE = 4,
+	DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE = 5,
+	DEFERRED_UPDATE_MESSAGE = 6,
+	UPDATE_MESSAGE = 7,
+	APPLICATION_COMMAND_AUTOCOMPLETE_RESULT = 8
+}
+
+const InteractionTypes = {
+	PING = 1,
+	APPLICATION_COMMAND = 2,
+	MESSAGE_COMPONENT = 3,
+	APPLICATION_COMMAND_AUTOCOMPLETE = 4
+}
+
+const InviteTargetTypes = {
+	STREAM = 1,
+	EMBEDDED_APPLICATION = 2
+}
+
+const MFALevels = {
+	NONE = 0,
+	ELEVATED = 1
+}
+
+const MessageActivityFlags = {
+	INSTANCE = 1 << 0,
+	JOIN = 1 << 1,
+	SPECTATE = 1 << 2,
+	JOIN_REQUEST = 1 << 3,
+	SYNC = 1 << 4,
+	PLAY = 1 << 5,
+	PARTY_PRIVACY_FRIENDS = 1 << 6,
+	PARTY_PRIVACY_VOICE_CHANNEL = 1 << 7,
+	EMBEDDED = 1 << 8
+}
+
+const MessageActivityTypes = {
+	JOIN = 1,
+	SPECTATE = 2,
+	LISTEN = 3,
+	JOIN_REQUEST = 5
+}
+
+const MessageFlags = {
+	CROSSPOSTED = 1 << 0,
+	IS_CROSSPOST = 1 << 1,
+	SUPPRESS_EMBEDS = 1 << 2,
+	SOURCE_MESSAGE_DELETED = 1 << 3,
+	URGENT = 1 << 4,
+	HAS_THREAD = 1 << 5,
+	EPHEMERAL = 1 << 6,
+	LOADING = 1 << 7
+}
+
+const MessageTypes = {
+	DEFAULT = 0,
+	RECIPIENT_ADD = 1,
+	RECIPIENT_REMOVE = 2,
+	CALL = 3,
+	CHANNEL_NAME_CHANGE = 4,
+	CHANNEL_ICON_CHANGE = 5,
+	CHANNEL_PINNED_MESSAGE = 6,
+	GUILD_MEMBER_JOIN = 7,
+	USER_PREMIUM_GUILD_SUBSCRIPTION = 8,
+	USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_1 = 9,
+	USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_2 = 0,
+	USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_3 = 1,
+	CHANNEL_FOLLOW_ADD = 2,
+
+	GUILD_DISCOVERY_DISQUALIFIED = 4,
+	GUILD_DISCOVERY_REQUALIFIED = 5,
+	GUILD_DISCOVERY_GRACE_PERIOD_INITIAL_WARNING = 6,
+	GUILD_DISCOVERY_GRACE_PERIOD_FINAL_WARNING = 7,
+	THREAD_CREATED = 8,
+	REPLY = 9,
+	CHAT_INPUT_COMMAND = 0,
+	THREAD_STARTER_MESSAGE = 1,
+	GUILD_INVITE_REMINDER = 2,
+	CONTEXT_MENU_COMMAND = 3
+}
+
+const PermissionOverwriteTypes = {
+	ROLE = 0,
+	USER = 1
+}
+
+const Permissions = {
+	CREATE_INSTANT_INVITE = 1 << 0,
+	KICK_MEMBERS = 1 << 1,
+	BAN_MEMBERS = 1 << 2,
+	ADMINISTRATOR = 1 << 3,
+	MANAGE_CHANNELS = 1 << 4,
+	MANAGE_GUILD = 1 << 5,
+	ADD_REACTIONS = 1 << 6,
+	VIEW_AUDIT_LOG = 1 << 7,
+	VOICE_PRIORITY_SPEAKER = 1 << 8,
+	VOICE_STREAM = 1 << 9,
+	VIEW_CHANNEL = 1 << 10,
+	SEND_MESSAGES = 1 << 11,
+	SEND_TTS_MESSAGES = 1 << 12,
+	MANAGE_MESSAGES = 1 << 13,
+	EMBED_LINKS = 1 << 14,
+	ATTACH_FILES = 1 << 15,
+	READ_MESSAGE_HISTORY = 1 << 16,
+	MENTION_EVERYONE = 1 << 17,
+	USE_EXTERNAL_EMOJIS = 1 << 18,
+	VIEW_GUILD_INSIGHTS = 1 << 19,
+	VOICE_CONNECT = 1 << 20,
+	VOICE_SPEAK = 1 << 21,
+	VOICE_MUTE_MEMBERS = 1 << 22,
+	VOICE_DEAFEN_MEMBERS = 1 << 23,
+	VOICE_MOVE_MEMBERS = 1 << 24,
+	VOICE_USE_VAD = 1 << 25,
+	CHANGE_NICKNAME = 1 << 26,
+	MANAGE_NICKNAMES = 1 << 27,
+	MANAGE_ROLES = 1 << 28,
+	MANAGE_WEBHOOKS = 1 << 29,
+	MANAGE_EMOJIS_AND_STICKERS = 1 << 30,
+	USE_APPLICATION_COMMANDS = 1 << 31,
+	VOICE_REQUEST_TO_SPEAK = 1 << 32,
+	MANAGE_EVENTS = 1 << 33,
+	MANAGE_THREADS = 1 << 34,
+	CREATE_PUBLIC_THREADS = 1 << 35,
+	CREATE_PRIVATE_THREADS = 1 << 36,
+	USE_EXTERNAL_STICKERS = 1 << 37,
+	SEND_MESSAGES_IN_THREADS = 1 << 38,
+	START_EMBEDDED_ACTIVITIES = 1 << 39,
+	MODERATE_MEMBERS = 1 << 40
+}
+
+const PermissionsAllGuild = Permissions.KICK_MEMBERS | Permissions.BAN_MEMBERS | Permissions.ADMINISTRATOR | Permissions.MANAGE_CHANNELS | Permissions.MANAGE_GUILD | Permissions.VIEW_AUDIT_LOG | Permissions.VIEW_GUILD_INSIGHTS | Permissions.CHANGE_NICKNAME | Permissions.MANAGE_NICKNAMES | Permissions.MANAGE_ROLES | Permissions.MANAGE_WEBHOOKS | Permissions.MANAGE_EMOJIS_AND_STICKERS | Permissions.MANAGE_EVENTS | Permissions.MODERATE_MEMBERS
+
+const PermissionsAllText = Permissions.CREATE_INSTANT_INVITE | Permissions.MANAGE_CHANNELS | Permissions.ADD_REACTIONS | Permissions.VIEW_CHANNEL | Permissions.SEND_MESSAGES | Permissions.SEND_TTS_MESSAGES | Permissions.MANAGE_MESSAGES | Permissions.EMBED_LINKS | Permissions.ATTACH_FILES | Permissions.READ_MESSAGE_HISTORY | Permissions.MENTION_EVERYONE | Permissions.USE_EXTERNAL_EMOJIS | Permissions.MANAGE_ROLES | Permissions.MANAGE_WEBHOOKS | Permissions.USE_APPLICATION_COMMANDS | Permissions.MANAGE_THREADS | Permissions.CREATE_PUBLIC_THREADS | Permissions.CREATE_PRIVATE_THREADS | Permissions.USE_EXTERNAL_STICKERS | Permissions.SEND_MESSAGES_IN_THREADS
+
+const PermissionsAllVoice = Permissions.CREATE_INSTANT_INVITE | Permissions.MANAGE_CHANNELS | Permissions.VOICE_PRIORITY_SPEAKER | Permissions.VOICE_STREAM | Permissions.VIEW_CHANNEL | Permissions.VOICE_CONNECT | Permissions.VOICE_SPEAK | Permissions.VOICE_MUTE_MEMBERS | Permissions.VOICE_DEAFEN_MEMBERS | Permissions.VOICE_MOVE_MEMBERS | Permissions.VOICE_USE_VAD | Permissions.MANAGE_ROLES | Permissions.VOICE_REQUEST_TO_SPEAK | Permissions.START_EMBEDDED_ACTIVITIES
+
+const PermissionsAll = PermissionsAllGuild | PermissionsAllText | PermissionsAllVoice
+
+const PremiumTiers = {
+	NONE = 0,
+	TIER_1 = 1,
+	TIER_2 = 2,
+	TIER_3 = 3,
+}
+
+const PremiumTypes = {
+	NONE = 0,
+	NITRO_CLASSIC = 1,
+	NITRO = 2,
+}
+
+const StageInstancePrivacyLevel = {
+	PUBLIC = 1,
+	GUILD_ONLY = 2,
+}
+
+const StickerFormats = {
+	PNG = 1,
+	APNG = 2,
+	LOTTIE = 3,
+}
+
+const StickerTypes = {
+	STANDARD = 1,
+	GUILD = 2,
+}
+
+const SystemChannelFlags = {
+	SUPPRESS_JOIN_NOTIFICATIONS = 1 << 0,
+	SUPPRESS_PREMIUM_SUBSCRIPTIONS = 1 << 1,
+	SUPPRESS_GUILD_REMINDER_NOTIFICATIONS = 1 << 2,
+	SUPPRESS_JOIN_NOTIFICATION_REPLIES    = 1 << 3
+}
+
+# const SystemJoinMessages = [
+#     "%s joined the party.",
+#     "%s is here.",
+#     "Welcome, %s. We hope you brought pizza.",
+#     "A wild %s appeared.",
+#     "%s just landed.",
+#     "%s just slid into the server.",
+#     "%s just showed up!",
+#     "Welcome %s. Say hi!",
+#     "%s hopped into the server.",
+#     "Everyone welcome %s!",
+#     "Glad you're here, %s.",
+#     "Good to see you, %s.",
+#     "Yay you made it, %s!",
+# ]
+
+const ThreadMemberFlags = {
+	HAS_INTERACTED = 1 << 0,
+	ALL_MESSAGES = 1 << 1,
+	ONLY_MENTIONS = 1 << 2,
+	NO_MESSAGES = 1 << 3,
+}
+
+const UserFlags = {
+	NONE = 0,
+	DISCORD_STAFF = 1 << 0,
+	PARTNER = 1 << 1,
+	HYPESQUAD = 1 << 2,
+	BUG_HUNTER_LEVEL_1 = 1 << 3,
+	HOUSE_BRAVERY = 1 << 6,
+	HOUSE_BRILLIANCE = 1 << 7,
+	HOUSE_BALANCE = 1 << 8,
+	PREMIUM_EARLY_SUPPORTER = 1 << 9,
+	TEAM_PSEUDO_USER = 1 << 10,
+	SYSTEM = 1 << 12,
+	BUG_HUNTER_LEVEL_2 = 1 << 14,
+	VERIFIED_BOT = 1 << 16,
+	VERIFIED_DEVELOPER = 1 << 17,
+	CERTIFIED_MODERATOR = 1 << 18,
+	BOT_HTTP_INTERACTIONS = 1 << 19,
+}
+
+const VerificationLevels = {
+	NONE = 0,
+	LOW = 1,
+	MEDIUM = 2,
+	HIGH = 3,
+	VERY_HIGH = 4,
+}
+
+const VideoQualityModes = {
+	AUTO = 1,
+	FULL = 2,
+}
+
+const VoiceOPCodes = {
+	IDENTIFY = 0,
+	SELECT_PROTOCOL = 1,
+	READY = 2,
+	HEARTBEAT = 3,
+	SESSION_DESCRIPTION = 4,
+	SPEAKING = 5,
+	HEARTBEAT_ACK = 6,
+	RESUME = 7,
+	HELLO = 8,
+	RESUMED = 9,
+	CLIENT_DISCONNECT = 3,
+}
+
+const WebhookTypes = {
+	INCOMING = 1,
+	CHANNEL_FOLLOWER = 2,
+	APPLICATION = 3,
+}

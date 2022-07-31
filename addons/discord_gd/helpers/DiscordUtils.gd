@@ -1,6 +1,9 @@
 # Helper methods for Discord.gd
 class_name DiscordUtils
 
+# Duck type check if any variable is a given string
+static func var_is_str(variable, string) -> bool:
+	return typeof(variable) == TYPE_STRING and variable == string
 
 # Get a property from an object if not null else default
 static func get_or_default(obj, property, default):

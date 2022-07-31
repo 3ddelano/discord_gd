@@ -20,13 +20,16 @@ func _init(p_name: String, p_options: Dictionary = {}).(p_name, p_options):
 
 
 # @hidden
-func to_dict() -> Dictionary:
+func to_dict(p_props = []) -> Dictionary:
 	var dict = .to_dict()
-	var set_props = __options__.set_props.keys()
+	#var set_props = __options__.set_props.keys()
 
 	# Force set each of the manually set props
-	for prop in set_props: dict[prop] = get(prop)
+	#for prop in set_props: dict[prop] = get(prop)
+	#dict = dict.duplicate(true)
 
-	dict = dict.duplicate(true)
+	dict = {}
+	for prop in p_props:
+		dict[prop] = get(prop)
 
-	return dict
+	return dict.duplicate(true)
