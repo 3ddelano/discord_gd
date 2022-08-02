@@ -17,7 +17,7 @@ var client # [DiscordClient] The client who instantiated this invite
 var channel = null
 
 var code: String # The invite code
-var guild: Guild # [Guild] The guild to which the invite belongs
+var guild # [Guild] The guild to which the invite belongs
 var inviter: User # [User] The invite creator
 var max_age: int # How long the invite lasts in seconds
 var max_uses: int # The max number of invite uses
@@ -39,15 +39,15 @@ func _init(p_dict, p_client).(p_dict.get("id", null), "Invite"):
 		code = p_dict["code"]
 
 	if "guild" in p_dict and client.guilds.get(p_dict.guild.id):
-		channel = client.guilds.get(p_dict.guild.id).channels.update(p_dict.channel, client)
+		channel = client.guilds.get(p_dict.guild.id).channels.update(p_dict.channel, [client])
 	else:
 		channel = p_dict.channel
 
 	if "guild" in p_dict:
 		if client.guilds.get(p_dict.guild.id):
-			guild = client.guilds.update(p_dict.guild, client)
+			guild = client.guilds.update(p_dict.guild, [client])
 		else:
-			guild = Guild.new(p_dict.guild, client)
+			guild = load("res://addons/discord_gd/structures/Guild.gd").new(p_dict.guild, client)
 
 	if "inviter" in p_dict:
 		inviter = client.users.add(p_dict.inviter, client)

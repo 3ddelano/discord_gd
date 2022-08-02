@@ -1,32 +1,20 @@
-# Represents a Discord guild text channel
+# Represents a Discord text in voice channel
 #
-# See [GuildChannel] for more properties and methods
-class_name TextChannel extends GuildChannel
+# See [VoiceChannel] for extra properties and methods
+class_name TextVoiceChannel extends VoiceChannel
 
-var default_auto_archive_duration: int # The default duration of newly created threads in minutes to automatically archive the thread after inactivity (60, 1440, 4320, 10080)
-var last_message_id: String # The id of the last message in this channel
-var last_pin_timestamp: int # The timestamp of the last pinned message
-var messages: DiscordCollection # Collection of Messages in this channel
-var rate_limit_per_user: int # The ratelimit of the channel, in seconds. 0 means no ratelimit is enabled
-var topic: String # The topic of the channel
-
+var messages: DiscordCollection # [DiscordCollection] Collection of messages in this channel
+var last_message_id = null # [String] Id of the last message in this channel
+var rate_limit_per_user = null # [int] The ratelimit of the channel, in seconds. 0 means no ratelimit is enabled
 
 # @hidden
-func _init(p_dict, p_client, p_message_limit = null, _name = "TextChannel").(p_dict, p_client, _name):
-	var message_limit = p_message_limit
-	if message_limit == null:
-		message_limit = p_client.options.message_limit
-
-	messages = DiscordCollection.new(Message, message_limit)
+func _init(p_dict, p_client, _name = "TextVoiceChannel").(p_dict, p_client, _name):
+	messages = DiscordCollection.new(load("res://addons/discord_gd/structures/Message.gd"))
 
 	if "last_message_id" in p_dict:
 		last_message_id = p_dict.last_message_id
 	if "rate_limit_per_user" in p_dict:
 		rate_limit_per_user = p_dict.rate_limit_per_user
-	if "last_pin_timestamp" in p_dict:
-		last_pin_timestamp = p_dict.last_pin_timestamp
-
-	update(p_dict)
 
 	return self
 
@@ -37,10 +25,6 @@ func update(p_dict):
 
 	if "rate_limit_per_user" in p_dict:
 		rate_limit_per_user = p_dict.rate_limit_per_user
-	if "topic" in p_dict:
-		topic = p_dict.topic
-	if "default_auto_archive_duration" in p_dict:
-		default_auto_archive_duration = p_dict.default_auto_archive_duration
 
 
 # Add a reaction to a message
@@ -50,12 +34,6 @@ func update(p_dict):
 # @returns [bool] | [HTTPResponse] if error
 func add_message_reaction(p_message_id, p_reaction, p_user_id = "@me") -> bool:
 	return client.add_message_reaction(id, p_message_id, p_reaction, p_user_id)
-
-
-# Create a message in the channel TODO: add docs
-# @returns [Message] | [HTTPResponse] if error
-func create_message(p_dict, p_files = []):
-	return client.create_message(id, p_dict, p_files)
 
 
 # Create an invite for the channel (all properties are `optional`)
@@ -70,40 +48,10 @@ func create_invite(p_options = {}, p_reason = null):
 	return client.create_channel_invite(id, p_options, p_reason)
 
 
-# Create a thread with an existing message
-# @param message_id: [String] The id the of the message to create the thread from
-# @param option: [Dictionary] The thread options
-# @param options.name: [String] The thread channel name
-# @param options.auto_archive_duration: [int] Duration in minutes to automatically archive the thread after recent activity, either 60, 1440, 4320 or 10080 `optional`
-# @param options.rate_limit_per_user: [int] Duration in minutes to automatically archive the thread after recent activity, either 60, 1440, 4320 or 10080 `optional`
-# @param reason: [String] The reason to be displayed in audit logs `optional`
-# @returns [NewsThreadChannel] | [PublicThreadChannel] | [HTTPResponse] if error
-func create_thread_with_message(p_message_id, p_options, p_reason = null):
-	return client.create_thread_with_message(id, p_message_id, p_options, p_reason)
-
-
-# Create a thread without an existing message
-# @param message_id: [String] The id the of the message to create the thread from
-# @param option: [Dictionary] The thread options
-# @param options.name: [String] The thread channel name
-# @param options.type: [int] The channel type of the thread to create
-# @param options.invitable: [bool] Whether non-moderators can add other non-moderators to the thread (private threads only) `optional`
-# @param options.auto_archive_duration: [int] Duration in minutes to automatically archive the thread after recent activity, either 60, 1440, 4320 or 10080 `optional`
-# @param options.rate_limit_per_user: [int] Duration in minutes to automatically archive the thread after recent activity, either 60, 1440, 4320 or 10080 `optional`
-# @param reason: [String] The reason to be displayed in audit logs `optional`
-# @returns [PrivateThreadChannel] | [HTTPResponse] if error
-func create_thread_without_message(p_options, p_reason = null) -> PrivateThreadChannel:
-	return client.create_thread_without_message(p_options, p_reason)
-
-
-# Create a channel webhook
-# @param options: [Dictionary] The webhook options
-# @param options.name: [String] The name of the webhook
-# @param options.avatar: [String] The default avatar as a base64 data URI. Note: base64 strings alone are not base64 data URI strings `optional`
-# @param reason: [String] The reason to be displayed in audit logs `optional`
-# @returns [Dictionary] | [HTTPResponse] if error
-func create_webhook(p_options, p_reason = null) -> Dictionary:
-	return client.create_channel_webhook(id, p_options, p_reason)
+# Create a message in the channel TODO: add docs
+# @returns [Message] | [HTTPResponse] if error
+func create_message(p_dict, p_files = []):
+	return client.create_message(id, p_dict, p_files)
 
 
 # Delete a message
@@ -128,29 +76,10 @@ func edit_message(p_message_id: String, p_dict):
 	return client.edit_message(id, p_message_id, p_dict)
 
 
-# Get all archived threads in this channel
-# @param type: [String] The type of thread channel, either "public" or "private"
-# @param options: [Dictionary] Additional options when requesting archived threads (all properties are `optional`)
-# @param options.before: [int] List of threads to return before the timestamp
-# @param options.limit: [int] Maximum number of threads to return
-# @returns [Dictionary] A dictionary containing an array of `threads`, an array of `members` and whether the response `has_more` threads that could be returned in a subsequent call | [HTTPResponse] if error
-func get_archived_threads(p_type, p_options = {}) -> Dictionary:
-	return client.get_archived_threads(id, p_type, p_options)
-
-
 # Get all invites in the channel
 # @returns [Array] of [Invite] | [HTTPResponse] if error
 func get_invites() -> Array:
 	return client.get_channel_invites(id)
-
-
-# Get joined private archived threads in this channel
-# @param options: [Dictionary] Additional options when requesting archived threads (all properties are `optioanl`)
-# @param options.before: [int] List of threads to return before the timestamp
-# @param options.limit: [int] Maximum number of threads to return
-# @returns [Dictionary] A dictionary containing an array of `threads`, an array of `members` and whether the response `has_more` threads that could be returned in a subsequent call | [HTTPResponse] if error
-func get_joined_private_archived_threads(p_options = {}) -> Dictionary:
-	return client.get_joined_private_archived_threads(id, p_options)
 
 
 # Get a previous message in the channel
@@ -180,25 +109,6 @@ func get_message_reaction(p_message_id: String, reaction: String, options = null
 # @returns [Array] of [Message]
 func get_messages(options = null) -> Array:
 	return client.get_messages(id, options)
-
-
-# Get all the pins in the channel
-# @returns [Array] of [Message]
-func get_pins() -> Array:
-	return client.get_pins(id)
-
-
-# Get all the webhooks in the channel
-# @returns [Array] of [Dictionary]
-func get_webhooks() -> Array:
-	return client.get_channel_webhooks(id)
-
-
-# Pin a message
-# @param message_id: [String] The id of the message
-# @returns [bool] | [HTTPResponse] if error
-func pin_message(p_message_id: String) -> bool:
-	return client.pin_message(id, p_message_id)
 
 
 # Purge previous messages in the channel with an optional filter
@@ -243,20 +153,11 @@ func send_typing() -> bool:
 	return client.send_channel_typing(id)
 
 
-# Unpin a message
-# @param message_id: [String] The id of the message
-# @returns [bool] | [HTTPResponse] if error
-func unpin_message(p_message_id: String) -> bool:
-	return client.unpin_message(id, p_message_id)
-
-
 # @hidden
 func to_dict(p_props = []) -> Dictionary:
-	p_props.append_aray([
+	p_props.append_array([
 		"last_message_id",
-		"last_pin_timestamp",
 		"messages",
 		"rate_limit_per_user",
-		"topic",
 	])
 	return .to_dict(p_props)

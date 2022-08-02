@@ -24,7 +24,7 @@ var channel: Channel
 var count: int
 
 var delete_member_days: int # The number of days of inactivity to prune for, action type 21 (MEMBER_PRUNE) only
-var guild: Guild # The guild containing the entry
+var guild # [Guild] The guild containing the entry
 
 # [GuildMember] | [Dictionary] The member described by the permission overwrite, action types 13-15 (CHANNEL\_OVERWRITE\_CREATE/UPDATE/DELETE) only. If the member is not cached, this could be a Dictionary {id: String}
 var member
@@ -151,7 +151,7 @@ func get_target():
 			max_uses = changes.get("max_uses", null),
 			max_ages = changes.get("max_ages", null),
 			temporary = changes.get("temporary", null),
-		}, guild, guild.shard.client)
+		}, guild.shard.client if guild != null else null)
 	elif action_type < 60: # Webhook
 		return null # Get it yourself
 	elif action_type < 70: # Emoji

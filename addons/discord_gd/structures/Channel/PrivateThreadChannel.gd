@@ -1,15 +1,15 @@
 # Represents a Discord private thread channel
 #
 # See [ThreadChannel] for extra properties
-#
-# thread_metadata.locked: [bool] Whether the thread is locked
 class_name PrivateThreadChannel extends ThreadChannel
+
 
 # @hidden
 func _init(p_dict, p_client, p_message_limit = -1).(p_dict, p_client, p_message_limit, "PrivateThreadChannel"):
 	update(p_dict)
 
 	return self
+
 
 func update(p_dict: Dictionary):
 	.update(p_dict)

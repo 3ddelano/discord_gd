@@ -5,10 +5,10 @@
 class_name User extends DiscordBase
 
 var client # [DiscordClient]
-var accent_color: int # The user's banner color, or null if no banner color (REST only)
-var avatar: String # The hash of the user's avatar, or null if no avatar
+var accent_color # [int] The user's banner color, or null if no banner color (REST only)
+var avatar # [String] The hash of the user's avatar, or null if no avatar
 var avatar_url: String setget , get_avatar_url# The URL of the user's avatar which can be either a JPG or GIF
-var banner: String # The hash of the user's banner, or null if no banner (REST only)
+var banner # [String] The hash of the user's banner, or null if no banner (REST only)
 var banner_url: String setget , get_banner_url # The URL of the user's banner
 var bot: bool # Whether the user is an OAuth bot or not
 var default_avatar: String setget , get_default_avatar # The hash for the default avatar of a user if there is no avatar set
@@ -67,7 +67,7 @@ func get_banner_url() -> String:
 
 # @hidden
 func get_default_avatar() -> String:
-	return str(discriminator % 5)
+	return str(int(discriminator) % 5)
 
 
 # @hidden

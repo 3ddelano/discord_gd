@@ -63,7 +63,7 @@ func _init(p_dict, p_client).(p_dict.get("id", null), "Message"):
 	client = p_client
 	type = p_dict.get("type", 0)
 	timestamp = p_dict.get("timestamp", 0)
-	channel = p_client.get_channel(p_dict.channel_id)
+	channel = p_client.get_channel(p_dict.get("channel_id"))
 	if not channel:
 		channel = {id = p_dict.channel_id}
 	content = ""

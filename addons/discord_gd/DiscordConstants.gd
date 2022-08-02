@@ -1,39 +1,39 @@
 class_name DiscordConstants
 
-const ActivityTypes = {
-	GAME = 0,
-	STREAMING = 1,
-	LISTENING = 2,
-	WATCHING = 3,
-	CUSTOM = 4,
-	COMPETING = 5,
+enum ActivityTypes {
+	GAME,
+	STREAMING,
+	LISTENING,
+	WATCHING,
+	CUSTOM,
+	COMPETING,
 }
 
-const ApplicationCommandOptionTypes = {
+enum ApplicationCommandOptionTypes {
 	SUB_COMMAND = 1,
-	SUB_COMMAND_GROUP = 2,
-	STRING = 3,
-	INTEGER = 4,
-	BOOLEAN = 5,
-	USER = 6,
-	CHANNEL = 7,
-	ROLE = 8,
-	MENTIONABLE = 9,
-	NUMBER = 10,
+	SUB_COMMAND_GROUP,
+	STRING,
+	INTEGER,
+	BOOLEAN,
+	USER,
+	CHANNEL,
+	ROLE,
+	MENTIONABLE,
+	NUMBER,
 }
 
-const ApplicationCommandPermissionTypes = {
+enum ApplicationCommandPermissionTypes {
 	ROLE = 1,
 	USER = 2,
 }
 
-const ApplicationCommandTypes = {
+enum ApplicationCommandTypes {
 	CHAT_INPUT = 1,
-	USER = 2,
-	MESSAGE = 3
+	USER,
+	MESSAGE
 }
 
-const AuditLogActions = {
+enum AuditLogActions {
 	GUILD_UPDATE = 1,
 
 	CHANNEL_CREATE = 10,
@@ -102,12 +102,12 @@ const AuditLogActions = {
 	AUTO_MODERATION_BLOCK_MESSAGE = 143,
 }
 
-const ButtonStyles = {
+enum ButtonStyles {
 	PRIMARY = 1,
-	SECONDARY = 2,
-	SUCCESS = 3,
-	DANGER = 4,
-	LINK = 5
+	SECONDARY,
+	SUCCESS,
+	DANGER,
+	LINK
 }
 
 const ChannelTypes = {
@@ -125,43 +125,43 @@ const ChannelTypes = {
 	GUILD_STAGE_VOICE = 3,
 }
 
-const ComponentTypes = {
+enum ComponentTypes {
 	ACTION_ROW = 1,
-	BUTTON = 2,
-	SELECT_MENU = 3
+	BUTTON,
+	SELECT_MENU
 }
 
-const ConnectionVisibilityTypes = {
-	NONE = 0,
-	EVERYONE = 1
+enum ConnectionVisibilityTypes {
+	NONE,
+	EVERYONE
 }
 
-const DefaultMessageNotificationLevels = {
-	ALL_MESSAGES = 0,
-	ONLY_MENTIONS = 1
+enum DefaultMessageNotificationLevels {
+	ALL_MESSAGES,
+	ONLY_MENTIONS
 }
 
-const ExplicitContentFilterLevels = {
-	DISABLED = 0,
-	MEMBERS_WITHOUT_ROLES = 1,
-	ALL_MEMBERS = 2
+enum ExplicitContentFilterLevels {
+	DISABLED,
+	MEMBERS_WITHOUT_ROLES,
+	ALL_MEMBERS
 }
 
-const GatewayOPCodes = {
-	DISPATCH = 0,
-	HEARTBEAT = 1,
-	IDENTIFY = 2,
-	PRESENCE_UPDATE = 3,
-	VOICE_STATE_UPDATE = 4,
-	VOICE_SERVER_PING = 5,
-	RESUME = 6,
-	RECONNECT = 7,
-	REQUEST_GUILD_MEMBERS = 8,
-	INVALID_SESSION = 9,
-	HELLO = 0,
-	HEARTBEAT_ACK = 1,
-	SYNC_GUILD = 2,
-	SYNC_CALL = 3
+enum GatewayOPCodes {
+	DISPATCH,
+	HEARTBEAT,
+	IDENTIFY,
+	PRESENCE_UPDATE,
+	VOICE_STATE_UPDATE,
+	VOICE_SERVER_PING,
+	RESUME,
+	RECONNECT,
+	REQUEST_GUILD_MEMBERS,
+	INVALID_SESSION,
+	HELLO,
+	HEARTBEAT_ACK,
+	SYNC_GUILD,
+	SYNC_CALL
 }
 
 const GuildFeatures = [
@@ -190,9 +190,9 @@ const GuildFeatures = [
 	"WELCOME_SCREEN_ENABLED"
 ]
 
-const GuildIntegrationExpireBehavior = {
-	REMOVE_ROLE = 0,
-	KICK = 1
+enum GuildIntegrationExpireBehavior {
+	REMOVE_ROLE,
+	KICK
 }
 const GuildIntegrationTypes = [
 	"twitch",
@@ -200,11 +200,11 @@ const GuildIntegrationTypes = [
 	"discord"
 ]
 
-const GuildNSFWLevels = {
-	DEFAULT = 0,
-	EXPLICIT = 1,
-	SAFE = 2,
-	AGE_RESTRICTED = 3
+enum GuildNSFWLevels {
+	DEFAULT,
+	EXPLICIT,
+	SAFE,
+	AGE_RESTRICTED
 }
 
 const ImageFormats = [
@@ -220,7 +220,7 @@ const ImageSizeBoundaries = {
 	MAXIMUM = 6
 }
 
-const Intents = {
+enum Intents {
 	GUILDS = 1 << 0,
 	GUILD_MEMBERS = 1 << 1,
 	GUILD_BANS = 1 << 2,
@@ -242,7 +242,7 @@ const IntentsAllNonPrivileged = Intents.GUILDS | Intents.GUILD_BANS | Intents.GU
 const IntentsAllPrivileged = Intents.GUILD_MEMBERS | Intents.GUILD_PRESENCES
 const IntentsAll = IntentsAllNonPrivileged | IntentsAllPrivileged
 
-const InteractionResponseTypes = {
+enum InteractionResponseTypes {
 	PONG = 1,
 	CHANNEL_MESSAGE_WITH_SOURCE = 4,
 	DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE = 5,
@@ -251,24 +251,24 @@ const InteractionResponseTypes = {
 	APPLICATION_COMMAND_AUTOCOMPLETE_RESULT = 8
 }
 
-const InteractionTypes = {
+enum InteractionTypes {
 	PING = 1,
-	APPLICATION_COMMAND = 2,
-	MESSAGE_COMPONENT = 3,
-	APPLICATION_COMMAND_AUTOCOMPLETE = 4
+	APPLICATION_COMMAND,
+	MESSAGE_COMPONENT,
+	APPLICATION_COMMAND_AUTOCOMPLETE
 }
 
-const InviteTargetTypes = {
+enum InviteTargetTypes {
 	STREAM = 1,
-	EMBEDDED_APPLICATION = 2
+	EMBEDDED_APPLICATION
 }
 
-const MFALevels = {
-	NONE = 0,
-	ELEVATED = 1
+enum MFALevels {
+	NONE,
+	ELEVATED
 }
 
-const MessageActivityFlags = {
+enum MessageActivityFlags {
 	INSTANCE = 1 << 0,
 	JOIN = 1 << 1,
 	SPECTATE = 1 << 2,
@@ -280,14 +280,14 @@ const MessageActivityFlags = {
 	EMBEDDED = 1 << 8
 }
 
-const MessageActivityTypes = {
+enum MessageActivityTypes {
 	JOIN = 1,
-	SPECTATE = 2,
-	LISTEN = 3,
-	JOIN_REQUEST = 5
+	SPECTATE,
+	LISTEN,
+	JOIN_REQUEST
 }
 
-const MessageFlags = {
+enum MessageFlags {
 	CROSSPOSTED = 1 << 0,
 	IS_CROSSPOST = 1 << 1,
 	SUPPRESS_EMBEDS = 1 << 2,
@@ -325,12 +325,12 @@ const MessageTypes = {
 	CONTEXT_MENU_COMMAND = 3
 }
 
-const PermissionOverwriteTypes = {
-	ROLE = 0,
-	USER = 1
+enum PermissionOverwriteTypes {
+	ROLE,
+	USER
 }
 
-const Permissions = {
+enum Permissions {
 	CREATE_INSTANT_INVITE = 1 << 0,
 	KICK_MEMBERS = 1 << 1,
 	BAN_MEMBERS = 1 << 2,
@@ -382,66 +382,66 @@ const PermissionsAllVoice = Permissions.CREATE_INSTANT_INVITE | Permissions.MANA
 
 const PermissionsAll = PermissionsAllGuild | PermissionsAllText | PermissionsAllVoice
 
-const PremiumTiers = {
-	NONE = 0,
-	TIER_1 = 1,
-	TIER_2 = 2,
-	TIER_3 = 3,
+enum PremiumTiers {
+	NONE,
+	TIER_1,
+	TIER_2,
+	TIER_3,
 }
 
-const PremiumTypes = {
-	NONE = 0,
-	NITRO_CLASSIC = 1,
-	NITRO = 2,
+enum PremiumTypes {
+	NONE,
+	NITRO_CLASSIC,
+	NITRO,
 }
 
-const StageInstancePrivacyLevel = {
+enum StageInstancePrivacyLevel {
 	PUBLIC = 1,
-	GUILD_ONLY = 2,
+	GUILD_ONLY,
 }
 
-const StickerFormats = {
+enum StickerFormats {
 	PNG = 1,
-	APNG = 2,
-	LOTTIE = 3,
+	APNG,
+	LOTTIE,
 }
 
-const StickerTypes = {
+enum StickerTypes {
 	STANDARD = 1,
-	GUILD = 2,
+	GUILD,
 }
 
-const SystemChannelFlags = {
+enum SystemChannelFlags {
 	SUPPRESS_JOIN_NOTIFICATIONS = 1 << 0,
 	SUPPRESS_PREMIUM_SUBSCRIPTIONS = 1 << 1,
 	SUPPRESS_GUILD_REMINDER_NOTIFICATIONS = 1 << 2,
 	SUPPRESS_JOIN_NOTIFICATION_REPLIES    = 1 << 3
 }
 
-# const SystemJoinMessages = [
-#     "%s joined the party.",
-#     "%s is here.",
-#     "Welcome, %s. We hope you brought pizza.",
-#     "A wild %s appeared.",
-#     "%s just landed.",
-#     "%s just slid into the server.",
-#     "%s just showed up!",
-#     "Welcome %s. Say hi!",
-#     "%s hopped into the server.",
-#     "Everyone welcome %s!",
-#     "Glad you're here, %s.",
-#     "Good to see you, %s.",
-#     "Yay you made it, %s!",
-# ]
+const SystemJoinMessages = [
+    "%s joined the party.",
+    "%s is here.",
+    "Welcome, %s. We hope you brought pizza.",
+    "A wild %s appeared.",
+    "%s just landed.",
+    "%s just slid into the server.",
+    "%s just showed up!",
+    "Welcome %s. Say hi!",
+    "%s hopped into the server.",
+    "Everyone welcome %s!",
+    "Glad you're here, %s.",
+    "Good to see you, %s.",
+    "Yay you made it, %s!",
+]
 
-const ThreadMemberFlags = {
+enum ThreadMemberFlags {
 	HAS_INTERACTED = 1 << 0,
 	ALL_MESSAGES = 1 << 1,
 	ONLY_MENTIONS = 1 << 2,
 	NO_MESSAGES = 1 << 3,
 }
 
-const UserFlags = {
+enum UserFlags {
 	NONE = 0,
 	DISCORD_STAFF = 1 << 0,
 	PARTNER = 1 << 1,
@@ -460,35 +460,35 @@ const UserFlags = {
 	BOT_HTTP_INTERACTIONS = 1 << 19,
 }
 
-const VerificationLevels = {
-	NONE = 0,
-	LOW = 1,
-	MEDIUM = 2,
-	HIGH = 3,
-	VERY_HIGH = 4,
+enum VerificationLevels {
+	NONE,
+	LOW,
+	MEDIUM,
+	HIGH,
+	VERY_HIGH,
 }
 
-const VideoQualityModes = {
+enum VideoQualityModes {
 	AUTO = 1,
-	FULL = 2,
+	FULL,
 }
 
-const VoiceOPCodes = {
-	IDENTIFY = 0,
-	SELECT_PROTOCOL = 1,
-	READY = 2,
-	HEARTBEAT = 3,
-	SESSION_DESCRIPTION = 4,
-	SPEAKING = 5,
-	HEARTBEAT_ACK = 6,
-	RESUME = 7,
-	HELLO = 8,
-	RESUMED = 9,
+enum VoiceOPCodes {
+	IDENTIFY,
+	SELECT_PROTOCOL,
+	READY,
+	HEARTBEAT,
+	SESSION_DESCRIPTION,
+	SPEAKING,
+	HEARTBEAT_ACK,
+	RESUME,
+	HELLO,
+	RESUMED,
 	CLIENT_DISCONNECT = 3,
 }
 
-const WebhookTypes = {
+enum WebhookTypes {
 	INCOMING = 1,
-	CHANNEL_FOLLOWER = 2,
-	APPLICATION = 3,
+	CHANNEL_FOLLOWER,
+	APPLICATION,
 }

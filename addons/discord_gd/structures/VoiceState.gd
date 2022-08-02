@@ -1,4 +1,4 @@
-# Represents a member's voice state in a call/guild
+# Represents a Discord member's voice state in a call/guild
 #
 # id: The id of the member
 class_name VoiceState extends DiscordBase

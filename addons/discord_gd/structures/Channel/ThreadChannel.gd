@@ -56,8 +56,8 @@ func update(p_dict):
 
 
 # Add a reaction to a message
-# @param message_id: String The id of the message
-# @param reaction: String The reaction (Unicode string if Unicode emoji, `emoji_name:emoji_id` if custom emoji)
+# @param message_id: [String] The id of the message
+# @param reaction: [String] The reaction (Unicode string if Unicode emoji, `emoji_name:emoji_id` if custom emoji)
 # @returns [bool] | [HTTPResponse] if error
 func add_message_reaction(p_message_id: String, p_reaction: String) -> bool:
 	return client.add_message_reaction(id, p_message_id, p_reaction)
@@ -70,8 +70,8 @@ func create_message(p_dict, p_files = []):
 
 
 # Delete a message
-# @param message_id: String The id of the message to delete
-# @param reason: String The reason to be displayed in audit logs `optional`
+# @param message_id: [String] The id of the message to delete
+# @param reason: [String] The reason to be displayed in audit logs `optional`
 # @returns [Message] | [HTTPResponse] if error
 func delete_message(p_message_id: String, p_reason = null):
 	return client.delete_message(id, p_message_id, p_reason)
@@ -79,7 +79,7 @@ func delete_message(p_message_id: String, p_reason = null):
 
 # Bulk delete messages (bot accounts only)
 # @param message_ids: [Array] of [String] List of message ids to delete
-# @param reason: String The reason to be displayed in audit logs `optional`
+# @param reason: [String] The reason to be displayed in audit logs `optional`
 # @returns [Message] | [HTTPResponse] if error
 func delete_messages(p_message_id: String, p_reason = null):
 	return client.delete_messages(id, p_message_id, p_reason)

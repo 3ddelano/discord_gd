@@ -75,6 +75,7 @@ func _get_json():
 			json[perm] = false
 	return json
 
+
 # Check if this permission allows a specific permission
 # @param p_permission: [String] | [int] The name of the permission, or bit of permissions
 # @returns [bool] Whether the permission allows the specified permission

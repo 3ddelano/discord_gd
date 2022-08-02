@@ -5,6 +5,8 @@ var base_object: Script # [Script] The base class for all items
 var base_object_path: String setget , _get_base_object_path
 var limit: int # Max number of items to hold
 
+var size: int setget , get_size
+
 var _dict = {} # The internal Dictionary used to store the objects
 
 # Construct a Collection
@@ -16,6 +18,11 @@ func _init(p_base_object: Script, p_limit: int = -1, _name = "DiscordCollection"
 	limit = p_limit
 
 	return self
+
+
+# @hidden
+func get_size() -> int:
+	return _dict.size()
 
 
 # Add an object to the collection
@@ -73,11 +80,11 @@ func remove(p_obj):
 
 
 # Update an object
-# @param obj: [Dictionary] The updated object data
+# @param obj: [Object] | [Dictionary] The updated object data
 # @param extra: [Array] Any extra parameters the constructor may need `optional`
 # {Boolean} [replace] Whether to replace an existing object with the same id `optional`
 # @returns [Object] The updated object
-func update(p_obj: Dictionary, p_extra: Array = [], p_replace: bool = false):
+func update(p_obj, p_extra: Array = [], p_replace: bool = false):
 		if not p_obj.id and p_obj.id == "":
 			DiscordUtils.perror("Collection(%s):update:Missing obj.id" % _get_base_object_path())
 

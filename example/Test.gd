@@ -351,9 +351,17 @@ func _on_rerun_btn_pressed() -> void:
 #	print(DiscordBase.new(930050630368768010).to_dict())
 #	print(DiscordBase.new("930050630368768010").to_dict())
 
-	var cli = DiscordClient.new(Env.get_var("TOKEN"))
-	add_child(cli)
-	cli.login()
+#	var cli = DiscordClient.new(Env.get_var("TOKEN"), {
+#		get_all_users = true,
+#		intents = DiscordConstants.IntentsAll
+#	})
+#	add_child(cli)
+#	cli.login()
+
+#	var ret = yield(cli, "client_ready")
+#	print(ret, "ready")
+#	print(cli.guilds)
+
 #	var chan1 = Channel.new({
 #		type = 2,
 #		id = "930050630368768010"

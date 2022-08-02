@@ -9,7 +9,7 @@ var creator: User # User that created the template
 var description: String # The template description
 var is_dirty: bool # Whether the template has unsynced changes
 var name: String # The template name
-var serialized_source_guild: Guild # The guild snapshot this template contains
+var serialized_source_guild # [Guild] The guild snapshot this template contains
 var source_guild # [Guild] | [Dictionary] The guild this template is based on. If the guild is not cached, this will be a Dictionary with `id` key. No other property is guaranteed
 var updated_at: int # Timestamp of template update
 var usage_count: int # Number of times this template has been used
@@ -46,7 +46,7 @@ func _init(p_dict, p_client).("GuildTemplate"):
 # @param name: [String] The name of the guild
 # @param [icon]: [String] The 128x128 icon as a base64 data URI `optional`
 # @returns [Guild] | [HTTPResponse] if error
-func create_guild(p_name: String, p_icon = null) -> Guild:
+func create_guild(p_name: String, p_icon = null):
 	return client.create_guild_from_template(code, p_name, p_icon)
 
 

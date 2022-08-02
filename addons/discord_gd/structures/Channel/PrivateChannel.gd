@@ -24,7 +24,7 @@ func _init(p_dict, p_client).(p_dict, p_client, "PrivateChannel"):
 
 # Add a reaction to a message
 # @param message_id: [String] The id of the message
-# @param reaction: String The reaction (Unicode string if Unicode emoji, `emoji_name:emoji_id` if custom emoji)
+# @param reaction: [String] The reaction (Unicode string if Unicode emoji, `emoji_name:emoji_id` if custom emoji)
 # @param user_id: [String] The id of the user to react as. Defaults to the bot user. `optional`
 # @returns [bool] | [HTTPResponse] if error
 func add_message_reaction(p_message_id, p_reaction, p_user_id = "@me") -> bool:
@@ -52,7 +52,7 @@ func edit_message(p_message_id: String, p_dict):
 
 
 # Get a previous message in the channel
-# message_id: String The id of the message
+# @param message_id: [String] The id of the message
 # @returns [Message] | [HTTPResponse] if error
 func get_message(p_message_id: String):
 	return client.get_message(id, p_message_id)

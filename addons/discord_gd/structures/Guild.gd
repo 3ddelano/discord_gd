@@ -70,7 +70,7 @@ func _init(p_dict, p_client).(p_dict.get("id", null), "Guild"):
 	client = p_client
 
 	if client.guild_shard_map.has(id):
-		shard = client.shards.get(client.guild_shard_map[id])
+		shard = client.shards.get(str(client.guild_shard_map[id]))
 	elif client.options.shards != 0:
 		shard = DiscordBase.getDiscordEpoch(p_dict.id) % client.options.maxShards
 	else:
@@ -84,13 +84,14 @@ func _init(p_dict, p_client).(p_dict.get("id", null), "Guild"):
 	voice_states = DiscordCollection.new(VoiceState)
 	channels = DiscordCollection.new(GuildChannel)
 	threads = DiscordCollection.new(ThreadChannel)
-#	members = DiscordCollection.new(GuildMember)
+	members = DiscordCollection.new(GuildMember)
 #	stage_instances = DiscordCollection.new(StageInstance)
 	if "member_count" in p_dict:
 		member_count = int(p_dict.member_count)
 #	roles = DiscordCollection.new(Role)
-	application_id = p_dict.application_id
 
+	if "application_id" in p_dict:
+		application_id = p_dict.application_id
 	if "widget_enabled" in p_dict:
 		widget_enabled = p_dict.widget_enabled
 	if "widget_channel_id" in p_dict:
@@ -262,7 +263,7 @@ func create_channel(p_name, p_type, p_options = {}, p_reason = null) -> Channel:
 # @param options.image: [String] The base64 encoded string
 # @param options.name: [String] The name of emoji
 # @param options.roles: [Array] of [String] An array containing authorized role ids `optional`
-# @param reason: String The reason to be displayed in audit logs `optional`
+# @param reason: [String] The reason to be displayed in audit logs `optional`
 # @returns [Dictionary] | [HTTPResponse] if error
 func create_emoji(p_options, p_reason = null) -> Dictionary:
 	return client.create_emoji(id, p_options, p_reason)

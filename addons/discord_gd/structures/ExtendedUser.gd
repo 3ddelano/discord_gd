@@ -1,7 +1,7 @@
 # Represents an extended Discord User
 class_name ExtendedUser extends User
 
-var email: String # The email of the user
+var email # [String] The email of the user
 var mfa_enabled: bool # Whether the user has enabled two-factor authentication
 var premium_type: int # The type of Nitro subscription on the user's account
 var verified: bool # Whether the account email has been verified

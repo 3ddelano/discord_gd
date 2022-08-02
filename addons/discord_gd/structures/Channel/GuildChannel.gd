@@ -15,14 +15,15 @@ var position: int # The position of the channel
 # @hidden
 func _init(p_dict, p_client, _name = "GuildChannel").(p_dict, p_client, _name):
 	# var GuildScript = load("res://addons/discord_gd/structures/Guild.gd")
-	guild = client.guilds.get(p_dict.guild_id)
+	guild = p_client.guilds.get(p_dict.guild_id)
 	if guild == null:
 		# guild = GuildScript.new({id = p_dict.guild_id})
-		guild = {id: p_dict.guild_id} # TODO: Try using Guild instead of simple Dictionary
+		guild = {id = p_dict.guild_id} # TODO: Try using Guild instead of simple Dictionary
 
 	update(p_dict)
 
 	return self
+
 
 # @hidden
 func update(p_dict):
@@ -43,7 +44,7 @@ func update(p_dict):
 
 
 # Delete the channel
-# @param reason: [String] The reason for deleting this channel `optional`
+# @param reason: [String] The reason to be displayed in audit logs `optional`
 # @returns [bool] | [HTTPResponse] is error
 func delete(p_reason = null) -> bool:
 	return client.delete_channel(id, p_reason)
@@ -51,7 +52,7 @@ func delete(p_reason = null) -> bool:
 
 # Delete a channel permission overwrite
 # @param overwrite_id: [String] The id of the overwritten user or role
-# @param reason: [String] The reason for deleting this channel `optional`
+# @param reason: [String] The reason to be displayed in audit logs `optional`
 # @returns [bool]| [HTTPResponse] if error
 func delete_permission(p_overwrite_id: String, p_reason = null) -> bool:
 	return client.delete_channel_permission(id, p_overwrite_id, p_reason)
@@ -100,7 +101,7 @@ func edit_permission(p_overwrite_id: String, p_type: int, p_allow = -1, p_deny =
 # @param options.lock_permissions: [bool] Whether to sync the permissions with the new parent if moving to a new category`optional`
 # @param options.parent_id: [String] The new parent id (category channel) for the channel that is moved `optional`
 # @returns [bool] | [HTTPResponse] if error
-func edit_position(p_position, p_options = null) -> bool:
+func edit_position(p_position, p_options = {}) -> bool:
 	return client.edit_channel_position(id, p_position, p_options)
 
 
